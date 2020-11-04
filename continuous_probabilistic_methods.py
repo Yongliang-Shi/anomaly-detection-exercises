@@ -33,5 +33,7 @@ def get_lower_and_upper_bounds(s, k=1.5):
     upper_bound = q3 + k * iqr
     lower_bound = q1 - k * iqr
     lower_outliers = s.apply(lambda x: min([x - lower_bound, 0]))
+    lower_outliers = lower_outliers[lower_outliers !=0]
     upper_outliers = s.apply(lambda x: max([x - upper_bound, 0]))
+    upper_outliers = upper_outliers[upper_outliers !=0]
     return lower_outliers, upper_outliers
